@@ -1,218 +1,142 @@
 <html>
-  <head>
-    <title>Betica Shop</title>
-    <meta charset="utf-8">
-    <meta name="author" content="Kevin Ramirez">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-      <div class="header">
-          <h1 class="my-0 mr-md-auto font-weight-normal">Betica Shop</h1>
-      </div>
-    <div id="content" class="mb10"></div>
-    <div class="footer">
-        <p class="my-0 mr-md-auto font-weight-normal">Copyright 2014</p>
-    </div>
-    
 
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      var info = {
-
-"items": {
-  "c001": {
-    "parent": "c000",
-
-    "title": "Phones"
-
-  },
-  "p007": {
-    "parent": "c005",
-
-    "manufacturer": "Samsung",
-
-    "title": "Samsung VR Headset",
-
-    "price": 699,
-
-    "releaseDate": "2018-04-23T18:25:43.511Z"
-
-  },
-  "c002": {
-    "parent": "c000",
-
-    "title": "Laptops"
-
-  },
-  "c004": {
-    "parent": "c100",
-
-    "title": "Cameras"
-
-  },
-  "p001": {
-    "parent": "c001",
-
-    "manufacturer": "Apple",
-
-    "title": "iPhone 10",
-
-    "price": 499,
-
-    "salePrice": [399, 359],
-
-    "releaseDate": "2018-04-23T18:25:43.511Z"
-
-  },
-  "p002": {
-    "parent": "c002",
-
-    "manufacturer": "Apple",
-
-    "title": "Macbook Pro 2017",
-
-    "price": 1999,
-
-    "salePrice": [1899, 1799],
-
-    "releaseDate": "2017-04-23T18:25:43.511Z"
-
-  },
-  "p003": {
-    "parent": "c002",
-
-    "manufacturer": "Dell",
-
-    "title": "XPS 13",
-
-    "price": 1399,
-
-    "salePrice": [1299, 1199],
-
-    "releaseDate": "2017-04-23T18:25:43.511Z"
-
-  },
-  "p004": {
-    "parent": "c001",
-
-    "manufacturer": "Samsung",
-
-    "title": "Samsung Galaxy S10",
-
-    "price": 399,
-
-    "salePrice": [299, 259],
-
-    "releaseDate": "2017-04-23T18:25:43.511Z"
-
-  },
-  "p005": {
-
-    "parent": "c003",
-
-    "manufacturer": "Apple",
-
-    "title": "Apple Charger 12W",
-
-    "price": 99,
-
-    "salePrice": [89, 79],
-
-    "releaseDate": "2016-12-23T18:25:43.511Z"
-
-  },
-  "c003": {
-    "parent": "c000",
-
-    "title": "Accessories"
-
-  },
-  "p006": {
-    "parent": "c003",
-
-    "manufacturer": "Samsung",
-
-    "title": "Samsung Charger 12W",
-
-    "price": 89,
-
-    "salePrice": [79, 69],
-
-    "releaseDate": "2017-04-23T18:25:43.511Z"
-
-  }
-
-},
-
-"onSale": true,
-
-"saleIndex": 0,
-
-"interval": 3000
-
-};
-       
-      // enter your code here
-      // render the items in the info using native Javascript or jQuery
-
-      
-
-      let wrapper = $('#content'), container;
-     
-    for (let key in info.items){
-
-      if (info.items[key].parent.indexOf('c000') > -1){
-        container = $('<div id="content" class="container"></div>');
-        wrapper.append(container);
-        container.append('<div class="parent">' + info.items[key].title +'</div>');
-        // console.log(key)
-
-        
-        for (let prod in info.items){
-          console.log(info.items[prod].salePrice)
-          if(key === info.items[prod].parent){
-
-            let ssale = info.onSale;
-            let sindex = info.saleIndex;
-            let sinterval = info.interval;
-            // let sprice = info.items.salePrice[sindex];
-            let price = info.items.price;
-          
-            // let dir_txt = [price, sprice]
-            setInterval(function() {
-            $('.price p').each(function() {
-              var txt = $(this).text();
-              console.log(txt)
-              switch (txt) {
-                case dir_txt[0]:
-                  $(this).text(price);
-
-                  break;
-                case dir_txt[1]:
-                  $(this).text(sprice[sindex]);
-                  break;
-              }
-            });
-          }, 1000);
-
-            container.append('<div class="price btn btn-primary btn-sm"><p>' + info.items[prod].price +'</p></div>\n<div class="releaseDate">');
-
-            container.append('<div class="block"><div class="manufacturer">' + info.items[prod].manufacturer +'</div>\n<div class="title">' + info.items[prod].title +'</div>\n<div class="price btn btn-primary btn-sm">' + info.items[prod].price +'</div>\n<div class="releaseDate">' + info.items[prod].releaseDate +'</div>\n</div>');         
-          }
-        }
-        
-      }
-    }
-
-    
-    </script>
-
+<head>
+	<title>Betica Shop</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Kevin Ramirez">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css"> </head>
+
+<body>
+	<div class="header">
+		<h1 class="my-0 mr-md-auto font-weight-normal">Betica Shop</h1> </div>
+	<div id="content" class="mb10"></div>
+	<div class="footer">
+		<p class="my-0 mr-md-auto font-weight-normal">Copyright 2014</p>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var info = {
+			"items": {
+				"c001": {
+					"parent": "c000"
+					, "title": "Phones"
+				}
+				, "p007": {
+					"parent": "c005"
+					, "manufacturer": "Samsung"
+					, "title": "Samsung VR Headset"
+					, "price": 699
+					, "releaseDate": "2018-04-23T18:25:43.511Z"
+				}
+				, "c002": {
+					"parent": "c000"
+					, "title": "Laptops"
+				}
+				, "c004": {
+					"parent": "c100"
+					, "title": "Cameras"
+				}
+				, "p001": {
+					"parent": "c001"
+					, "manufacturer": "Apple"
+					, "title": "iPhone 10"
+					, "price": 499
+					, "salePrice": [399, 359]
+					, "releaseDate": "2018-04-23T18:25:43.511Z"
+				}
+				, "p002": {
+					"parent": "c002"
+					, "manufacturer": "Apple"
+					, "title": "Macbook Pro 2017"
+					, "price": 1999
+					, "salePrice": [1899, 1799]
+					, "releaseDate": "2017-04-23T18:25:43.511Z"
+				}
+				, "p003": {
+					"parent": "c002"
+					, "manufacturer": "Dell"
+					, "title": "XPS 13"
+					, "price": 1399
+					, "salePrice": [1299, 1199]
+					, "releaseDate": "2017-04-23T18:25:43.511Z"
+				}
+				, "p004": {
+					"parent": "c001"
+					, "manufacturer": "Samsung"
+					, "title": "Samsung Galaxy S10"
+					, "price": 399
+					, "salePrice": [299, 259]
+					, "releaseDate": "2017-04-23T18:25:43.511Z"
+				}
+				, "p005": {
+					"parent": "c003"
+					, "manufacturer": "Apple"
+					, "title": "Apple Charger 12W"
+					, "price": 99
+					, "salePrice": [89, 79]
+					, "releaseDate": "2016-12-23T18:25:43.511Z"
+				}
+				, "c003": {
+					"parent": "c000"
+					, "title": "Accessories"
+				}
+				, "p006": {
+					"parent": "c003"
+					, "manufacturer": "Samsung"
+					, "title": "Samsung Charger 12W"
+					, "price": 89
+					, "salePrice": [79, 69]
+					, "releaseDate": "2017-04-23T18:25:43.511Z"
+				}
+			}
+			, "onSale": true
+			, "saleIndex": 0
+			, "interval": 3000
+		};
+		// enter your code here
+		// render the items in the info using native Javascript or jQuery
+		let wrapper = $('#content')
+			, container;
+		for (let key in info.items) {
+			if (info.items[key].parent.indexOf('c000') > -1) {
+				container = $('<div id="content" class="container"></div>');
+				wrapper.append(container);
+				container.append('<div class="parent">' + info.items[key].title + '</div>');
+				// console.log(key)
+				for (let prod in info.items) {
+					console.log(info.items[prod].salePrice)
+					if (key === info.items[prod].parent) {
+						let ssale = info.onSale;
+						let sindex = info.saleIndex;
+						let sinterval = info.interval;
+						// let sprice = info.items.salePrice[sindex];
+						let price = info.items.price;
+						// let dir_txt = [price, sprice]
+						setInterval(function () {
+							$('.price p').each(function () {
+								var txt = $(this).text();
+								console.log(txt)
+								switch (txt) {
+								case dir_txt[0]:
+									$(this).text(price);
+									break;
+								case dir_txt[1]:
+									$(this).text(sprice[sindex]);
+									break;
+								}
+							});
+						}, 1000);
+						
+						container.append('<div class="block"><div class="manufacturer">' + info.items[prod].manufacturer + '</div>\n<div class="title">' + info.items[prod].title + '</div>\n<div class="price btn btn-primary btn-sm">' + info.items[prod].price + '</div>\n<div class="releaseDate">' + info.items[prod].releaseDate + '</div>\n</div>');
+					}
+				}
+			}
+		}
+	</script>
 </body>
+
 </html>

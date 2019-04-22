@@ -1,0 +1,49 @@
+body {
+    min-width: 320px;
+    margin: 0 auto;
+    text-align: center; 
+    font-size: 10px;
+}
+.header {
+    height: 15%;
+}
+.mb10 {
+    margin-bottom: 10%!important; 
+}
+.header h1,
+.footer p {
+    position: fixed;
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    background: blue;
+    color: #fff;
+}
+.footer p {
+    bottom: 0;
+    font-size: 2em;
+}
+.parent {
+    font-size: 2em;
+    font-weight: bold;
+}
+.manufacturer {
+    margin-bottom: 10px; 
+    background: #000;
+    color: #fff;
+    font-size: 2em;   
+}
+.block {
+    margin-top: 10px;
+    border: 1px solid #000;
+    border-top: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.price,
+.title, 
+.releaseDate {
+    margin:  0 0 10px;
+    font-size: 1.5em;
+}
